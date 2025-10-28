@@ -1,0 +1,60 @@
+
+- name: Configuring/installing Docker and deploying Docker app 
+  hosts: webserver
+  become: yes  # to work as sudo
+  tasks:
+    - name: Upgrade all packages
+      ansible.builtin.dnf:
+        name: "*"
+        state: latest       # equivalent to sudo dnf update
+
+    - name: Install Docker
+      ansible.builtin.dnf:
+        name: docker
+        state: present # To install Docker     /////// equivalent to sudo dnf install docker
+
+    - name: Start docker on boot
+      ansible.builtin.service:
+        name: docker
+        state: started  # Ensures the Docker service is running    /////// equivalent to systemctl start
+        enabled: yes    # Ensures Docker starts automatically on boot    ///// equivalent to systemctl enable
+
+#------------------- PART 3 --------------------------
+
+    - name: Install Python pip
+      dnf:
+        name: python3-pip
+        state: present
+
+    - name: Install Docker SDK for Python # To be able to use modules as docker_image and docker_container
+      dnf:
+        name: python3-docker
+        state: present
+
+    - name: Copy app directory to EC server
+      copy:
+        src: /home/guille/MSc Cybersecurity/NetworkAndSystemsAdministration/CA-1---Network-and-Systems-Administration/Ansible/app/
+        dest: /home/ec2-user/app
+  
+    - name: Build docker image from Dockerfile
+      docker_image:  
+        name: ca-1-app
+        build:
+            path: /home/ec2-user/app
+        force_source: true    # re-build the image every time (e.g in case I do changes on index.html)
+        source: build
+        state: present
+
+    - name: Run the Docker container
+      docker_container:
+        name: ca-1-container
+        image: ca-1-app
+        state: started
+        restart_policy: always
+        ports:
+          - "80:80"
+
+
+
+
+# To run the configuration: ansible-playbook -i inventory.ini docker_setup.yml
