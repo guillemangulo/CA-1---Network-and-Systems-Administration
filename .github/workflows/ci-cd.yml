@@ -28,6 +28,6 @@ jobs:
           chmod 600 private.key
         
       # Step 4: Runs Ansible playbook
-      - name: Run Ansible Playbook
+      - name: Run Ansible Playbook v2
         run: |
-          ansible-playbook -i inventory.ini ../Ansible/docker_setup.yml 
+          ansible-playbook -i inventory.ini /Ansible/docker_setup.yml 
