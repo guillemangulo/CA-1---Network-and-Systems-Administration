@@ -30,4 +30,8 @@ jobs:
       # Step 4: Runs Ansible playbook
       - name: Run Ansible Playbook v2
         run: |
-          ansible-playbook -i Ansible/inventory.ini Ansible/docker_setup.yml 
+          ansible-playbook -i Ansible/inventory.ini Ansible/docker_setup.yml \ 
+          --extra-vars "ansible_host=${{ secrets.IP_HOST_EC2 }}" \ 
+          --extra-vars "ansible_ssh_private_key_file=private.key" 
+
+ 
