@@ -1,0 +1,33 @@
+name: Deploy to EC2
+
+# run on push main branch
+on:
+  push:
+    branches:
+      - main  
+
+jobs:
+  my_first_job:
+    name: CI/CD job
+    runs-on: ubuntu-latest
+    steps:
+      # Step 1: Checks out your repository code onto the runner
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      # Step 2: Installs Ansible on the runner
+      - name: Install Ansible
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ansible
+          
+      # Step 3: Takes the SSH key from GitHub Secret
+      - name: Set up SSH private key
+        run: |
+          echo "${{ secrets.SSH_KEY_EC2 }}" > private.key
+          chmod 600 private.key
+        
+      # Step 4: Runs Ansible playbook
+      - name: Run Ansible Playbook
+        run: |
+          ansible-playbook -i inventory.ini docker_setup.yml 
