@@ -33,7 +33,7 @@
 
     - name: Copy app directory to EC server
       copy:
-        src: /home/guille/MSc Cybersecurity/NetworkAndSystemsAdministration/CA-1---Network-and-Systems-Administration/Ansible/app/
+        src: app/
         dest: /home/ec2-user/app
   
     - name: Build docker image from Dockerfile
