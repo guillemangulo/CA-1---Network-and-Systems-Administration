@@ -53,13 +53,8 @@
         restart_policy: always
         ports:
           - "80:80"
-          
-    - name: Verify website is running
-      run: |
-          echo "Waiting 5 seconds for container to start..."
-          sleep 5
-          echo "Pinging the website's public IP..."
-          curl --fail http://${{ secrets.IP_HOST_EC2 }}
+
+    
   
 
 

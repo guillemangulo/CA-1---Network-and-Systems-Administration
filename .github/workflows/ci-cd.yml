@@ -32,4 +32,9 @@ jobs:
         run: |
           ansible-playbook -i Ansible/inventory.ini Ansible/docker_setup.yml --extra-vars "ansible_host=${{ secrets.IP_HOST_EC2 }}" --extra-vars "ansible_ssh_private_key_file=private.key" 
 
- 
+      - name: Verify website is running
+        run: |
+          echo "Waiting 5 seconds for container to start..."
+          sleep 5
+          echo "Pinging the website's public IP..."
+          curl --fail http://${{ secrets.IP_HOST_EC2 }}
