@@ -70,7 +70,7 @@ jobs:
       - name: Run Ansible Playbook v3
         run: |
           ansible-playbook \
-            --inventory "${{ needs.terraform.outputs.instance_ip }}," --private-key private.key --user ec2-user -o StrictHostKeyChecking=no Ansible/docker_setup.yml
+            --inventory "${{ needs.terraform.outputs.instance_ip }}," --private-key private.key --user ec2-user --ssh-extra-args "-o StrictHostKeyChecking=no" Ansible/docker_setup.yml
     
       - name: Verify website is running
         run: |
