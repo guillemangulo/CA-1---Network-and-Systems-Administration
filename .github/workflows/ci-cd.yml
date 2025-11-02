@@ -72,4 +72,9 @@ jobs:
           ansible-playbook \
             --inventory "${{ needs.terraform.outputs.instance_ip }}," --private-key private.key --user ec2-user --ssh-extra-args "-o StrictHostKeyChecking=no" Ansible/docker_setup.yml
     
-    
+      - name: Verify website is running
+        run: |
+          echo "Waiting 5 seconds for container to start..."
+          sleep 5
+          echo "Pinging the website's public IP..."
+          curl --fail http://${{ needs.terraform.outputs.instance_ip }}
