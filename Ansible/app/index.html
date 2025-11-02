@@ -51,7 +51,7 @@
         .tech-stack li {
             margin-bottom: 10px; 
         }
-       
+        /* This makes the tool name bold and gives it a fixed width */
         .tech-stack strong {
             color: #004a99;
             display: inline-block;
@@ -80,17 +80,17 @@
             <div class="tech-stack">
                 <h2>Technology Stack & Roles:</h2>
                 <ul>
-                    <li><strong>Terraform:</strong> Provisioned the AWS EC2 server.</li>
-                    <li><strong>Ansible:</strong> Configured the server, installed Docker, and deployed a container.</li>
-                    <li><strong>Docker:</strong> Containerized this application, bundling Nginx and a HTML file.</li>
-                    <li><strong>Nginx:</strong> Web server running inside the container to serve this page.</li>
+                    <li><strong>Terraform:</strong> Provisioned the AWS EC2 server and security group.</li>
+                    <li><strong>Ansible:</strong> Configured the server, installed Docker, and deployed this container.</li>
+                    <li><strong>Docker:</strong> Containerized this application, bundling Nginx and this HTML file.</li>
+                    <li><strong>Nginx:</strong> Acts as the lightweight web server running *inside* the container to serve this page.</li>
                     <li><strong>GitHub Actions:</strong> Provides the CI/CD pipeline that automatically triggers the Ansible deployment on every `git push`.</li>
                 </ul>
             </div>
         </main>
 
         <footer>
-            Guillem Angulo Hidalgo.
+            Guillem Angulo Hidalgo
         </footer>
     </div>
 
