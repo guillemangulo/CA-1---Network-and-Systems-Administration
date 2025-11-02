@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DBS CA-1: Full Automation</title>
+    <title>CA-1 - Network and Systems Administration</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -13,7 +13,7 @@
             padding: 20px;
             display: flex;
             justify-content: center;
-            align-items: center;aa
+            align-items: center;
             min-height: 90vh;
         }
         .container {
@@ -30,7 +30,7 @@
             margin-bottom: 25px;
         }
         h1 {
-            color: #004a99; /* A dark, professional blue */
+            color: #004a99; 
             margin: 0;
             font-size: 2.2em;
         }
@@ -45,13 +45,13 @@
             font-size: 1.1em;
         }
         .tech-stack ul {
-            list-style-type: none; /* Removes bullet points */
+            list-style-type: none; 
             padding-left: 0;
         }
         .tech-stack li {
-            margin-bottom: 10px; /* Adds space between items */
+            margin-bottom: 10px; 
         }
-        /* This makes the tool name bold and gives it a fixed width */
+       
         .tech-stack strong {
             color: #004a99;
             display: inline-block;
@@ -74,16 +74,16 @@
         </header>
 
         <main>
-            <h2>Subject: Network Systems and Administration</h2>
+            <h2>Subject: Network and Systems Administration</h2>
             <p><strong>Institution:</strong> Dublin Business School (DBS)</p>
 
             <div class="tech-stack">
                 <h2>Technology Stack & Roles:</h2>
                 <ul>
-                    <li><strong>Terraform:</strong> Provisioned the AWS EC2 server and security group.</li>
-                    <li><strong>Ansible:</strong> Configured the server, installed Docker, and deployed this container.</li>
-                    <li><strong>Docker:</strong> Containerized this application, bundling Nginx and this HTML file.</li>
-                    <li><strong>Nginx:</strong> Acts as the lightweight web server running *inside* the container to serve this page.</li>
+                    <li><strong>Terraform:</strong> Provisioned the AWS EC2 server.</li>
+                    <li><strong>Ansible:</strong> Configured the server, installed Docker, and deployed a container.</li>
+                    <li><strong>Docker:</strong> Containerized this application, bundling Nginx and a HTML file.</li>
+                    <li><strong>Nginx:</strong> Web server running inside the container to serve this page.</li>
                     <li><strong>GitHub Actions:</strong> Provides the CI/CD pipeline that automatically triggers the Ansible deployment on every `git push`.</li>
                 </ul>
             </div>

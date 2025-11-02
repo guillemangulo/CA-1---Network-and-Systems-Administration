@@ -11,13 +11,13 @@
     - name: Install Docker
       ansible.builtin.dnf:
         name: docker
-        state: present # To install Docker     /////// equivalent to sudo dnf install docker
+        state: present # to install Docker     /////// equivalent to sudo dnf install docker
 
     - name: Start docker on boot
       ansible.builtin.service:
         name: docker
-        state: started  # Ensures the Docker service is running    /////// equivalent to systemctl start
-        enabled: yes    # Ensures Docker starts automatically on boot    ///// equivalent to systemctl enable
+        state: started  # ensures the Docker service is running    /////// equivalent to systemctl start
+        enabled: yes    # ensures Docker starts automatically on boot    ///// equivalent to systemctl enable
 
 #------------------- PART 3 --------------------------
 
@@ -26,7 +26,7 @@
         name: python3-pip
         state: present
 
-    - name: Install Docker SDK for Python # To be able to use modules as docker_image and docker_container
+    - name: Install Docker SDK for Python # to be able to use modules as docker_image and docker_container
       dnf:
         name: python3-docker
         state: present
@@ -41,7 +41,7 @@
         name: ca-1-app
         build:
             path: /home/ec2-user/app
-        force_source: true    # re-build the image every time (e.g in case I do changes on index.html)
+        force_source: true    # re-build the image every time (in case I do changes on index.html)
         source: build
         state: present
 
@@ -60,4 +60,4 @@
 
 
 
-# To run the configuration: ansible-playbook -i inventory.ini docker_setup.yml
+# to run the configuration: ansible-playbook -i inventory.ini docker_setup.yml
