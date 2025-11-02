@@ -67,7 +67,7 @@ jobs:
           chmod 600 private.key
         
       
-      - name: Run Ansible Playbook v3
+      - name: Run Ansible Playbook
         run: |
           ansible-playbook \
             --inventory "${{ needs.terraform.outputs.instance_ip }}," --private-key private.key --user ec2-user --ssh-extra-args "-o StrictHostKeyChecking=no" Ansible/docker_setup.yml
