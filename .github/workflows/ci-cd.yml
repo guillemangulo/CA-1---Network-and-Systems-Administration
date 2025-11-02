@@ -7,9 +7,46 @@ on:
       - main  
 
 jobs:
+  terraform:
+    name: "Job 1: Run Terraform"
+    runs-on: ubuntu-latest
+
+    outputs:
+      instance_ip: ${{ steps.set_ip.outputs.ip_address }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.PWD_ACCESS_KEY_AWS }}
+          aws-region: eu-west-1 
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Apply
+        run: terraform apply 
+
+      - name: Get Terraform IP and save it
+        id: set_ip 
+        run: |
+          IP_FROM_TF=$(terraform output -raw instance_ip)
+          echo "ip_address=$IP_FROM_TF" >> "$GITHUB_OUTPUT"
+          echo "Instance provisioned at: $IP_FROM_TF"
+
+
+jobs:
   my_first_job:
     name: CI/CD job
     runs-on: ubuntu-latest
+    needs: [terraform] # if no instance, will fail
     steps:
       
       - name: Checkout repository
