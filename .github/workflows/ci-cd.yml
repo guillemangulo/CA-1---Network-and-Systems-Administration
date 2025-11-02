@@ -34,6 +34,7 @@ jobs:
 
       - name: Terraform Apply
         run: terraform apply 
+        working-directory: ./Terraform
 
       - name: Get Terraform IP and save it
         id: set_ip 
@@ -41,6 +42,7 @@ jobs:
           IP_FROM_TF=$(terraform output -raw instance_ip)
           echo "ip_address=$IP_FROM_TF" >> "$GITHUB_OUTPUT"
           echo "Instance provisioned at: $IP_FROM_TF"
+        working-directory: ./Terraform
 
 
   ansible:
