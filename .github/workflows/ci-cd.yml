@@ -33,7 +33,7 @@ jobs:
         working-directory: ./Terraform
 
       - name: Terraform Apply
-        run: terraform apply 
+        run: terraform apply -auto-approve #do not stop waiting for "yes"
         working-directory: ./Terraform
 
       - name: Get Terraform IP and save it
