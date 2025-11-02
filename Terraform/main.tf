@@ -47,7 +47,7 @@ resource "aws_instance" "CA-1-Instance" {
 }
 
 output "instance_ip" {
-  description = "Public IP from EC2 instance."
+  description = "Public IP from EC2 instance"
   value       = aws_instance.CA-1-Instance.public_ip
 }
 
