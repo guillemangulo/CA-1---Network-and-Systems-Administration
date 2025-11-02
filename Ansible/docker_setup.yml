@@ -1,6 +1,6 @@
 
 - name: Configuring/installing Docker and deploying Docker app 
-  hosts: webserver
+  hosts: all
   become: yes  # to work as sudo
   tasks:
     - name: Upgrade all packages
