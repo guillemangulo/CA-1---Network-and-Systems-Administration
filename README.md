@@ -94,7 +94,7 @@ It is split into two sequential **`jobs`:**
     * *ports: - "80:80"*: This maps the host's Port 80 to the container's Port 80, making the website public.
     * *restart_policy: always*: This ensures the container will always restart if the server reboots.
 
-## [*Dockerfile*](./app/Dockerfile)
+## [*Dockerfile*](./Ansible/app/Dockerfile)
 
 **What it does:** This is the set of instructions for building the application's container image.
 
@@ -105,7 +105,7 @@ It is split into two sequential **`jobs`:**
 * **FROM nginx:alpine**: This is the base image. The `alpine` tag is used because it's a minimal, lightweight version of NGINX, which results in a smaller final image size and a reduced attack surface.
 * **COPY index.html /usr/share/nginx/html**: This command copies the `index.html` file into the default web server directory *inside* the container, replacing the default NGINX welcome page.
 
-## [*index.html*](./app/index.html)
+## [*index.html*](./Ansible/app/index.html)
 
 **What it does:** This is the simple, static webpage that is served to the user. Its main purpose is to prove that the entire pipeline was successful.
 
@@ -116,7 +116,7 @@ It is split into two sequential **`jobs`:**
 * The content of the page explicitly lists the "Technology Stack" used (Terraform, Ansible, Docker, etc.).
 * When a user accesses the public IP and sees this page, it confirms that every step—from provisioning, to configuration, to containerization, to deployment—has worked correctly.
 
-## [*inventory.ini*](./inventory.ini)
+## [*inventory.ini*](./Ansible/inventory.ini)
 
 **Path:** /
 
